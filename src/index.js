@@ -3,11 +3,30 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { ApolloClient } from 'apollo-client';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { HttpLink } from 'apollo-link-http';
+import { ApolloProvider } from '@apollo/react-hooks';
+// Set graphQl API link and initialize memory
+const cache = new InMemoryCache();
+const link = new HttpLink({
+  uri: 'https://graphql-pokemon.now.sh/'
+})
+
+// CreateClient Instance
+
+const client = new ApolloClient({
+  cache,
+  link
+})
 
 ReactDOM.render(
   <React.StrictMode>
+    <ApolloProvider client={client}>
     <App />
-  </React.StrictMode>,
+    </ApolloProvider>
+  </React.StrictMode>
+  ,
   document.getElementById('root')
 );
 

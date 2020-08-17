@@ -10,7 +10,10 @@ import { ApolloProvider } from '@apollo/react-hooks';
 // Set graphQl API link and initialize memory
 const cache = new InMemoryCache();
 const link = new HttpLink({
-  uri: 'https://graphql-pokemon.now.sh/'
+  uri: 'https://graphql-pokemon.now.sh/',
+  fetchOptions: {
+    mode: 'no-cors',
+  },
 })
 
 // CreateClient Instance

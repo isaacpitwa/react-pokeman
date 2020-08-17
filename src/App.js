@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { useQuery } from '@apollo/react-hooks';
 import gql from "graphql-tag";
@@ -44,7 +43,7 @@ function App() {
         data.pokemons &&
         data.pokemons.map((pokemon, index) => (
           <div key={index} className="card">
-            <img src={pokemon.image} />
+            <img src={pokemon.image} alt=""/>
             <div class="card-body">
               <h3>{pokemon.name}</h3>
               <p>
